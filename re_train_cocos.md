@@ -36,12 +36,14 @@ The changes made are:
 
     - A couple more things might have to be changed, but those are the fundamental ones.
 
-3) Finally, set the variables to train the whole model:
+4) Define the paths under the *pipeline,py* file and change a couple of things in that script.
+
+5) Finally, set the variables to train the whole model:
 
         NUM_TRAINING_STEPS=50000 && \
         NUM_EVAL_STEPS=2000
 
-4) Start the training job:
+6) Start the training job:
 
         
         # From the /tensorflow/models/research/ directory
