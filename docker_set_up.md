@@ -32,6 +32,14 @@ If you are in a hurry adding `sudo` at the beggining of the command will solve t
         
         sudo usermod -a -G docker $USER
 
+- For this you need to specify the `USER`:
+
+        cut -d: -f1 /etc/passwd
+
+- With that command we list all the users, then we just type the user we want to add to the group
+
+        sudo usermod -a -G docker tomas_user
+
 This will add the user to a Group and will let you run those type of commands without any problem.*
 
 After this, your terminal should now show your command prompt inside the Docker container.
