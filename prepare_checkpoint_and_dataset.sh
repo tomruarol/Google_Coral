@@ -61,8 +61,8 @@ sed -i "s%DATASET_DIR_TO_CONFIGURE%${DATASET_DIR}%g" "${CKPT_DIR}/pipeline.confi
 echo "PREPARING dataset"
 mkdir "${DATASET_DIR}"
 cd "${DATASET_DIR}"
-wget http://www.robots.ox.ac.uk/~vgg/data/pets/data/images.tar.gz
-wget http://www.robots.ox.ac.uk/~vgg/data/pets/data/annotations.tar.gz
+wget http://images.cocodataset.org/zips/train2017.zip
+wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
 unzip zxf images.zip
 unzip zxf annotations.zip
 
