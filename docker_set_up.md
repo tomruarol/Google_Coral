@@ -40,6 +40,18 @@ If you are in a hurry adding `sudo` at the beggining of the command will solve t
 
         sudo usermod -a -G docker tomas_user
 
-This will add the user to a Group and will let you run those type of commands without any problem.*
+This will add the user to a Group and will let you run those type of commands without any problem.        
+
+If this does not work (sometimes you might need to logout and login / restart terminal), there is an alternative solution:
+
+Run the following command in order to avoid having to log in/out all the time:
+     
+        newgrp docker
+
+After this, run again the add user command:
+
+        sudo usermod -aG docker $USER
+
+Where $USER would be the users to add to the docker group (root & tomruarol for example).*
 
 After this, your terminal should now show your command prompt inside the Docker container.
