@@ -58,13 +58,20 @@ echo "REPLACING variables in config file..."
 sed -i "s%CKPT_DIR_TO_CONFIGURE%${CKPT_DIR}%g" "${CKPT_DIR}/pipeline.config"
 sed -i "s%DATASET_DIR_TO_CONFIGURE%${DATASET_DIR}%g" "${CKPT_DIR}/pipeline.config"
 
-echo "PREPARING dataset"
-mkdir "${DATASET_DIR}"
-cd "${DATASET_DIR}"
-wget http://images.cocodataset.org/zips/train2017.zip
-wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
-unzip train2017.zip
-unzip annotations_trainval2017.zip
+######################### PREPARE DATASET ORIGINAL ##################################
+
+echo "PREPARING dataset --> ORIGINAL WAY"
+#mkdir "${DATASET_DIR}"
+#cd "${DATASET_DIR}"
+#wget http://images.cocodataset.org/zips/train2017.zip
+#wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+#unzip train2017.zip
+#unzip annotations_trainval2017.zip
+
+######################### PREPARE DATASET INNOVATIVE ##################################
+
+echo "PREPARING dataset --> INNOVATIVE WAY"
+source ./object_detection/dataset_tools/download_and_preprocess_mscoco.sh
 
 
 #echo "PREPARING dataset using first two classes of Oxford-IIIT Pet dataset..."
