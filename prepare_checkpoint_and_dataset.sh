@@ -71,7 +71,7 @@ echo "PREPARING dataset --> ORIGINAL WAY"
 ######################### PREPARE DATASET INNOVATIVE ##################################
 
 echo "PREPARING dataset --> INNOVATIVE WAY"
-source ./object_detection/dataset_tools/download_and_preprocess_mscoco.sh
+. ./object_detection/dataset_tools/download_and_preprocess_mscoco.sh
 
 
 #echo "PREPARING dataset using first two classes of Oxford-IIIT Pet dataset..."
