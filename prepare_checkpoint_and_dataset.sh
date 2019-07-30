@@ -91,7 +91,7 @@ cd "${OBJ_DET_DIR}"
 cp "object_detection/data/mscoco_label_map.pbtxt" "${DATASET_DIR}"
 
 echo "CONVERTING dataset to TF Record..."
-python object_detection/dataset_tools/create_pet_coco_record.py \
+python object_detection/dataset_tools/create_coco_coco_record.py \
     --label_map_path="${DATASET_DIR}/mscoco_label_map.pbtxt" \
     --data_dir="${DATASET_DIR}" \
     --output_dir="${DATASET_DIR}"
