@@ -60,19 +60,18 @@ sed -i "s%DATASET_DIR_TO_CONFIGURE%${DATASET_DIR}%g" "${CKPT_DIR}/pipeline.confi
 
 ######################### PREPARE DATASET ORIGINAL ##################################
 
-echo "PREPARING dataset --> ORIGINAL WAY"
-#mkdir "${DATASET_DIR}"
-#cd "${DATASET_DIR}"
-#wget http://images.cocodataset.org/zips/train2017.zip
-#wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
-#unzip train2017.zip
-#unzip annotations_trainval2017.zip
+echo "PREPARING dataset"
+if [ ! -d "$DATASET_DIR" ]; then
+        mkdir "${DATASET_DIR}"
+        cd "${DATASET_DIR}"
+        wget http://images.cocodataset.org/zips/train2017.zip
+        wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+        unzip train2017.zip
+        unzip annotations_trainval2017.zip
+fi
+#echo "PREPARING dataset --> INNOVATIVE WAY"
 
-######################### PREPARE DATASET INNOVATIVE ##################################
-
-echo "PREPARING dataset --> INNOVATIVE WAY"
-. ./object_detection/dataset_tools/download_and_preprocess_mscoco.sh
-
+#. ./object_detection/dataset_tools/download_and_preprocess_mscoco.sh
 
 #echo "PREPARING dataset using first two classes of Oxford-IIIT Pet dataset..."
 # Extract first two classes of data
