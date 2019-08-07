@@ -47,21 +47,29 @@ def make_initializable_iterator(dataset):
 
 def read_dataset(file_read_func, input_files, config):
   """Reads a dataset, and handles repetition and shuffling.
-
   Args:
     file_read_func: Function to use in tf.contrib.data.parallel_interleave, to
       read every individual file into a tf.data.Dataset.
     input_files: A list of file paths to read.
     config: A input_reader_builder.InputReader object.
-
   Returns:
     A tf.data.Dataset of (undecoded) tf-records based on config.
-
   Raises:
     RuntimeError: If no files are found at the supplied path(s).
   """
   # Shard, shuffle, and read files.
-  filenames = tf.gfile.Glob(input_files)
+  print('##################### INPUT_FILES############', input_files)
+  ##################################### CUSTOM ##############################################
+  filenames = glob.glob('/tensorflow/models/research/tmp/mscoco/coco_train*')
+  print('############## FILE NAMES NORMAL READ##################', filenames)
+  file_list = []
+  file_glob = os.path.join('/tensorflow/models/research/tmp/mscoco/', '*.' + 'of-00010')
+  file_list.extend(tf.gfile.Glob(file_glob))
+  #filenames = tf.gfile.Glob('/tensorflow/models/research/tmp/mscoco/coco_train*')
+  print('############## FILE NAMES AFTER TF #####################', filenames)
+  ###########################################################################################
+  #filenames = tf.gfile.Glob(input_files)
+  filenames = file_list
   if not filenames:
     raise RuntimeError('Did not find any input files matching the glob pattern '
                        '{}'.format(input_files))
@@ -87,6 +95,7 @@ def read_dataset(file_read_func, input_files, config):
   if config.shuffle:
     records_dataset = records_dataset.shuffle(config.shuffle_buffer_size)
   return records_dataset
+
 
 
 def build(input_reader_config, batch_size=None, transform_input_data_fn=None):
