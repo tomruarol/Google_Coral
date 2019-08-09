@@ -58,6 +58,7 @@ def read_dataset(file_read_func, input_files, config):
     RuntimeError: If no files are found at the supplied path(s).
   """
   # Shard, shuffle, and read files.
+  directorio = '/tensorflow/models/research/tmp/mscoco/coco_train'
   print('##################### INPUT_FILES############', input_files)
   ##################################### CUSTOM ##############################################
   filenames = glob.glob('/tensorflow/models/research/tmp/mscoco/coco_train*')
@@ -69,6 +70,9 @@ def read_dataset(file_read_func, input_files, config):
   print('############## FILE NAMES AFTER TF #####################', filenames)
   ###########################################################################################
   #filenames = tf.gfile.Glob(input_files)
+  #filenames = tf.gfile.Glob(input_files)
+  print ('######################################################################################')
+  filenames = tf.gfile.Glob(directorio + "*of-00010")
   filenames = file_list
   if not filenames:
     raise RuntimeError('Did not find any input files matching the glob pattern '
