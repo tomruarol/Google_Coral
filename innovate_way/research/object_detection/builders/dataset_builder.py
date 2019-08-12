@@ -57,6 +57,10 @@ def read_dataset(file_read_func, input_files, config):
   Raises:
     RuntimeError: If no files are found at the supplied path(s).
   """
+
+  # Let's try to ignore glob
+
+  '''
   # Shard, shuffle, and read files.
   directorio = '/tensorflow/models/research/tmp/mscoco/coco_train'
   print('##################### INPUT_FILES############', input_files)
@@ -77,6 +81,8 @@ def read_dataset(file_read_func, input_files, config):
   if not filenames:
     raise RuntimeError('Did not find any input files matching the glob pattern '
                        '{}'.format(input_files))
+  '''
+  filenames = input_files
   num_readers = config.num_readers
   if num_readers > len(filenames):
     num_readers = len(filenames)
